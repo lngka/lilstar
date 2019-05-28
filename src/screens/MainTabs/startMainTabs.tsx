@@ -1,83 +1,93 @@
 import { Navigation, LayoutBottomTabs, LayoutStack, LayoutComponent } from 'react-native-navigation';
-
-/* individual screen components*/
-const zoGridScreen: LayoutComponent = {
-    id: '', // Optional, Auto generated if empty
-    name: 'lilstar.ZodiacGridScreen',
-    options: {}
-}
-
-const miscScreen: LayoutComponent = {
-    id: '', 
-    name: 'lilstar.MiscScreen',
-    options: {}
-}
-
-/* individual screen stacks*/
-const stack1: LayoutStack = {
-    children: [
-      {
-        component: zoGridScreen
-      }
-    ],
-    options: {
-        bottomTab: {
-          text: 'Zo Tab',
-          icon: require("../../assets/icons/yin-yang-32px.png"),
-          textColor: "darkgrey",
-          selectedTextColor: "black",
-          iconInsets: { top: 5, left: 28, bottom: 28, right: 28 },
-
-        },
-        topBar: { // hide top navigation bar && allow drawing behind (more screen space)
-            visible: false,
-            drawBehind: true
-        }
-    }
-}
-const stack2: LayoutStack = {
-    children: [
-      {
-        component: miscScreen
-      }
-    ],
-    options: {
-        bottomTab: {
-          text: 'Misc Tab',
-          icon: require("../../assets/icons/yin-yang-32px.png"),
-          textColor: "darkgrey",
-          selectedTextColor: "black",
-          iconInsets: { top: 5, left: 28, bottom: 28, right: 28 },
-        },
-        topBar: {
-            visible: false,
-            drawBehind: true
-        },
-        bottomTabs: {
-          animate: false
-        }
-    }
-} 
-
-/* the tabs */
-const myTabs: LayoutBottomTabs = {
-    children: [
-      {
-        stack: stack1
-      },
-      {
-        stack: stack2
-      }
-    ],
-    options: {}
-} 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const startMainTabs = () => {
+  Promise.all([
+      Icon.getImageSource("theme-light-dark", 30, "grey"),
+      Icon.getImageSource("theme-light-dark", 33, "grey"),
+      Icon.getImageSource("yin-yang", 30, "grey"),
+      Icon.getImageSource("yin-yang", 33, "grey")
+  ]).then(sources => {
+    /* screen components*/
+    const zoGridScreen: LayoutComponent = {
+      name: 'lilstar.ZodiacGridScreen',
+      options: {}
+    }
+
+    const miscScreen: LayoutComponent = {
+      name: 'lilstar.MiscScreen',
+      options: {}
+    }
+
+    /* screen stacks*/
+    const stack1: LayoutStack = {
+      children: [
+        {
+          component: zoGridScreen
+        }
+      ],
+      options: {
+          bottomTab: {
+            text: 'Zo Tab',
+            icon: sources[0],
+            selectedIcon: sources[1],
+            textColor: "darkgrey",
+            selectedIconColor: "black",
+            selectedTextColor: "black",
+            //iconInsets: { top: 5, left: 28, bottom: 28, right: 28 },
+          },
+          topBar: { // hide top navigation bar && allow drawing behind (more screen space)
+              visible: false,
+              drawBehind: true
+          }
+      }
+    }
+    const stack2: LayoutStack = {
+      children: [
+        {
+          component: miscScreen
+        }
+      ],
+      options: {
+          bottomTab: {
+            text: 'Misc Tab',
+            icon: sources[2],
+            selectedIcon: sources[3],
+            textColor: "darkgrey",
+            selectedIconColor: "black",
+            selectedTextColor: "black",
+          },
+          topBar: {
+              visible: false,
+              drawBehind: true
+          },
+          bottomTabs: {
+            animate: false
+          }
+      }
+    } 
+
+    /* the tabs */
+    const myTabs: LayoutBottomTabs = {
+      children: [
+        {
+          stack: stack1
+        },
+        {
+          stack: stack2
+        }
+      ],
+      options: {}
+    } 
+
+    /* start app */   
     Navigation.setRoot({
         root: {
           bottomTabs: myTabs
         }
     });
-};
+  })       
+}
+
 
 export default startMainTabs;
