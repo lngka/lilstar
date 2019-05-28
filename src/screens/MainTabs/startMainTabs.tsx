@@ -22,8 +22,12 @@ const stack1: LayoutStack = {
     ],
     options: {
         bottomTab: {
-            text: 'Zo Tab',
-            icon: require("../../assets/icons/gear.png")
+          text: 'Zo Tab',
+          icon: require("../../assets/icons/yin-yang-32px.png"),
+          textColor: "darkgrey",
+          selectedTextColor: "black",
+          iconInsets: { top: 5, left: 28, bottom: 28, right: 28 },
+
         },
         topBar: { // hide top navigation bar && allow drawing behind (more screen space)
             visible: false,
@@ -39,12 +43,18 @@ const stack2: LayoutStack = {
     ],
     options: {
         bottomTab: {
-            text: 'Misc Tab',
-            icon: require("../../assets/icons/gear.png")
+          text: 'Misc Tab',
+          icon: require("../../assets/icons/yin-yang-32px.png"),
+          textColor: "darkgrey",
+          selectedTextColor: "black",
+          iconInsets: { top: 5, left: 28, bottom: 28, right: 28 },
         },
         topBar: {
             visible: false,
             drawBehind: true
+        },
+        bottomTabs: {
+          animate: false
         }
     }
 } 
