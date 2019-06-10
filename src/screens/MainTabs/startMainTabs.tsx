@@ -28,7 +28,7 @@ const startMainTabs = () => {
       ],
       options: {
           bottomTab: {
-            text: 'Zo Tab',
+            text: 'Horoscopes',
             icon: sources[0],
             selectedIcon: sources[1],
             textColor: "darkgrey",
@@ -50,7 +50,7 @@ const startMainTabs = () => {
       ],
       options: {
           bottomTab: {
-            text: 'Misc Tab',
+            text: 'Taoism',
             icon: sources[2],
             selectedIcon: sources[3],
             textColor: "darkgrey",
