@@ -7,24 +7,24 @@ class ZodiacGridScreen extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.gridRow}>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
+                    <ImageButtonCard label="Aries" imgSource={require("../../assets/img/aries.png")}/>
+                    <ImageButtonCard label="Taurus" imgSource={require("../../assets/img/taurus.png")}/>
+                    <ImageButtonCard label="Gemini" imgSource={require("../../assets/img/gemini.png")}/>
                 </View>
                 <View style={styles.gridRow}>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
+                    <ImageButtonCard label="Cancer" imgSource={require("../../assets/img/cancer.png")}/>
+                    <ImageButtonCard label="Leo" imgSource={require("../../assets/img/leo.png")}/>
+                    <ImageButtonCard label="Virgo" imgSource={require("../../assets/img/virgo.png")}/>
                 </View>
                 <View style={styles.gridRow}>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
+                    <ImageButtonCard label="Libra" imgSource={require("../../assets/img/libra.png")}/>
+                    <ImageButtonCard label="Scorpio" imgSource={require("../../assets/img/scorpio.png")}/>
+                    <ImageButtonCard label="Sagittarius" imgSource={require("../../assets/img/sagittarius.png")}/>
                 </View>
                 <View style={styles.gridRow}>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
-                    <ImageButtonCard viewStyle={styles.gridItem}/>
+                    <ImageButtonCard label="Capricorn" imgSource={require("../../assets/img/capricorn.png")}/>
+                    <ImageButtonCard label="Aquarius" imgSource={require("../../assets/img/aquarius.png")}/>
+                    <ImageButtonCard label="Pisces" imgSource={require("../../assets/img/pisces.png")}/>
                 </View>
             </View>
         )
@@ -44,8 +44,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     gridItem: {
-        flex: 1,
-        margin: 8
+        flex: 1
     }
 })
 export default ZodiacGridScreen;
