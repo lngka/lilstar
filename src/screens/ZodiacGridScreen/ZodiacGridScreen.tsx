@@ -1,13 +1,55 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
+import { View, StyleSheet, Platform, GestureResponderEvent } from "react-native";
 import ImageButtonCard from "../../components/ImageButtonCard";
 
-class ZodiacGridScreen extends Component {
+import Zodiacs from "../../models/ZodiacEnum";
+import { naviActionCreator } from '../../store/actions/actionCreatorIndex'
+import { connect } from "react-redux";
+import { Dispatch, AnyAction } from "redux";
+import { NaviActionData } from "../../store/actions/naviActionCreator";
+
+import { HoroscopeScreen } from "../ScreenIndex";
+
+/**
+ * Define interface for props
+ * so that TypeScript allows calling this.props.******
+ */
+interface IMapStateToProps {}
+interface IMapDispatchToProps {
+    dispatchNaviAction: (data: NaviActionData) => void;
+}
+interface Props extends IMapStateToProps, IMapDispatchToProps {
+}
+
+/**
+ * ZodiacGridScreen renders a 3x4 grid, each item represents a zodiac 
+ */
+class ZodiacGridScreen extends Component<Props> {
+    /**
+     * Create a function that navigate app to 
+     * the corresponding horoscope screen
+     */
+    CreateOnImageButtonClickHandler = (target: Zodiacs) => {
+        const data = {
+            destination: HoroscopeScreen,
+            zodiac: target
+        };
+
+        // this function will be called by react-native inside ImageButtonCard.onclick 
+        const OnImageButtonClickHandler = (event: GestureResponderEvent) => {
+            this.props.dispatchNaviAction(data);
+        };
+        return OnImageButtonClickHandler; 
+    }
+    
     render () {
         return (
             <View style={styles.container}>
                 <View style={styles.gridRow}>
-                    <ImageButtonCard label="Aries" imgSource={require("../../assets/img/aries.png")}/>
+                    <ImageButtonCard 
+                        label="Aries" 
+                        imgSource={require("../../assets/img/aries.png")} 
+                        clickHandler={this.CreateOnImageButtonClickHandler(Zodiacs.Aries)}/>
                     <ImageButtonCard label="Taurus" imgSource={require("../../assets/img/taurus.png")}/>
                     <ImageButtonCard label="Gemini" imgSource={require("../../assets/img/gemini.png")}/>
                 </View>
@@ -46,5 +88,13 @@ const styles = StyleSheet.create({
     gridItem: {
         flex: 1
     }
-})
-export default ZodiacGridScreen;
+});
+
+
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>): IMapDispatchToProps => {
+    return {
+        dispatchNaviAction: (data) => dispatch(naviActionCreator(data)),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(ZodiacGridScreen);

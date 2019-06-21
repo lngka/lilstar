@@ -3,10 +3,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import testReducer from './reducers/test';
+import naviReducer from './reducers/navi';
 
 // "slides" of the store combined
 const rootReducer = combineReducers({
-    testStore: testReducer
+    testStore: testReducer,
+    naviStore: naviReducer
 });
 
 // use composeWithDevTools for redux-devtools in DEV mode

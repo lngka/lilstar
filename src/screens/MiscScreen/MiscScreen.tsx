@@ -1,5 +1,5 @@
 import React, { Component, Dispatch } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet, Platform } from "react-native";
 import { connect } from "react-redux";
 import { testActionCreator } from '../../store/actions/actionCreatorIndex'
 import { AnyAction } from "redux";
@@ -21,13 +21,19 @@ class MiscScreen extends Component<Props> {
     }
     render () {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>MiscScreen</Text>
                 <Button title="Test" onPress={this.onTestPress}/>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: (Platform.OS == "ios") ? 35 : 0,
+    }
+});
 
 // const mapStateToProps = state => {
 //     return {
