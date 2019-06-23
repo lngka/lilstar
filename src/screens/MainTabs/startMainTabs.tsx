@@ -1,5 +1,6 @@
 import { Navigation, LayoutBottomTabs, LayoutStack, LayoutComponent } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ScreenID from '../ScreenID';
 
 const startMainTabs = () => {
   Promise.all([
@@ -10,12 +11,14 @@ const startMainTabs = () => {
   ]).then(sources => {
     /* screen components*/
     const zoGridScreen: LayoutComponent = {
-      name: 'lilstar.ZodiacGridScreen',
+      id: ScreenID.ZodiacGridScreen,
+      name: ScreenID.ZodiacGridScreen,
       options: {}
     }
 
     const miscScreen: LayoutComponent = {
-      name: 'lilstar.MiscScreen',
+      id: ScreenID.MiscScreen,
+      name: ScreenID.MiscScreen,
       options: {}
     }
 

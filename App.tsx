@@ -1,20 +1,21 @@
 
 import React from "react";
 import { Navigation } from "react-native-navigation";
-import ZodiacGridScreen  from "./src/screens/ZodiacGridScreen/ZodiacGridScreen";
-import MiscScreen from "./src/screens/MiscScreen/MiscScreen";
-
 import configureStore from "./src/store/configureStore";
 import startMainTabs  from "./src/screens/MainTabs/startMainTabs";
-
 import { Provider } from "react-redux";
 
+import ZodiacGridScreen  from "./src/screens/ZodiacGridScreen/ZodiacGridScreen";
+import MiscScreen from "./src/screens/MiscScreen/MiscScreen";
+import HoroscopeScreen from "./src/screens/HoroscopeScreen/HoroscopeScreen";
+import  ScreenID  from "./src/screens/ScreenID";
 
 const store = configureStore();
 
 // https://wix.github.io/react-native-navigation/#/docs/Usage?id=the-basics
-Navigation.registerComponent('lilstar.ZodiacGridScreen', reduxStoreWrapper(ZodiacGridScreen, store));
-Navigation.registerComponent('lilstar.MiscScreen', reduxStoreWrapper(MiscScreen, store));
+Navigation.registerComponent(ScreenID.ZodiacGridScreen, reduxStoreWrapper(ZodiacGridScreen, store));
+Navigation.registerComponent(ScreenID.MiscScreen, reduxStoreWrapper(MiscScreen, store));
+Navigation.registerComponent(ScreenID.HoroscopeScreen, reduxStoreWrapper(HoroscopeScreen, store));
 
 
 

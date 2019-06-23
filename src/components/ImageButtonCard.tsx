@@ -1,5 +1,5 @@
-import { Component, FunctionComponent } from "react";
-import { View, StyleSheet, Text, TextStyle, ViewStyle, Image, ImageSourcePropType, TouchableHighlight, GestureResponderEvent, TouchableOpacity } from "react-native";
+import { Component } from "react";
+import { View, StyleSheet, Text, Image, ImageSourcePropType, GestureResponderEvent, TouchableOpacity } from "react-native";
 import React from "react";
 
  /** allow passing style as prop */

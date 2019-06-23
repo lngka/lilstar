@@ -3,14 +3,14 @@ import Zodiacs from "../../models/ZodiacEnum";
 
 interface State {
     currentScreen: String,
-    zodiac?: Zodiacs
+    zodiac?: String
 };
 
 interface NaviAction {
     type: string,
     data: {
-        destination: string,
-        zodiac: Zodiacs
+        destination: String,
+        zodiac: String
     }
 }
 
